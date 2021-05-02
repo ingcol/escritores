@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Inertia\Inertia;
+//use Inertia\Inertia;
 class HomeController extends Controller
 {
     /**
@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-     $this->middleware('auth');
+     
     }
 
     /**
@@ -23,15 +23,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-           return Inertia::render('Home');
+           return view('Home');
     }
 
-    public function prueba(){
 
-
-        return Inertia::render('Home');
-
-    }
     
     public function userProfile()
     {

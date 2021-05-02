@@ -1,48 +1,29 @@
-/*
+
 require('./bootstrap');
 
 window.Vue = require('vue').default;
+/* loading para cargar en filtros
+npm i --save vuejs-loading-plugin
+import VueLoading from 'vuejs-loading-plugin'
+Vue.use(VueLoading)
+*/
+import Lightbox from 'vue-easy-lightbox'
 
-Vue.component('ejemplo', require('./components/ExampleComponent.vue').default);
-Vue.component('sidebar', require('./components/SidebarComponent.vue').default);
+Vue.use(Lightbox)
+
+import VueToastr from "vue-toastr";
+// use plugin
+Vue.use(VueToastr, {
+  /* OverWrite Plugin Options if you need */
+});
+Vue.component('slider-component', require('./components/admin/SliderComponent.vue').default);
+Vue.component('usuario-component', require('./components/admin/UsuarioComponent.vue').default);
+Vue.component('galeria-component', require('./components/admin/GaleriaComponent.vue').default);
+//Vue.component('sidebar', require('./components/SidebarComponent.vue').default);
 
 const app = new Vue({
     el: '#app',
 });
 
-*/
-
-import { App, plugin } from '@inertiajs/inertia-vue'
-import Vue from 'vue'
 
 
-
-Vue.use
-
-
-
-
-
-(plugin)
-
-const el = document.getElementById
-
-
-
-('app')
-
-
-
-new Vue({
-  render: h => h(App, {
-    props: {
-      initialPage: JSON.parse(el.dataset.page),
-      //resolveComponent: name => require(`./Pages/${name}`).default,
-      resolveComponent: name => import(`./Pages/${name}`).then(module => module.default),
-    },
-  })
-
-
-
-,
-}).$mount(el)

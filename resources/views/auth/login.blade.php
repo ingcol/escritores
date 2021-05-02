@@ -2,29 +2,13 @@
 @section('content')
 
 <div class="row g-0 app-auth-wrapper">
-    <div class="col-12 col-md-5 col-lg-6 h-100 auth-background-col">
-    <div class="auth-background-holder">
-    </div>
-    <div class="auth-background-mask"></div>
-    <div class="auth-background-overlay p-3 p-lg-5">
-        <div class="d-flex flex-column align-content-end h-100">
-            <div class="h-100"></div>
-            <div class="overlay-content p-3 p-lg-4 rounded">
-               
-                <div><p>Escribir es la manera más profunda de leer la vida.</p>
-                    <p><strong>-Francisco Umbral</strong></p>
-
-                </div>
-            </div>
-        </div>
-    </div><!--//auth-background-overlay-->
-</div><!--//auth-background-col-->
-    <div class="col-12 col-md-7 col-lg-6 auth-main-col text-center p-5">
+    
+    <div class="col-12 col-md-12 col-lg-12 auth-main-col text-center p-5">
         <div class="d-flex flex-column align-content-end">
-            <div class="app-auth-body mx-auto"> 
+            <div class="app-auth-body mx-auto bg-white pb-4 pt-3 pl-3 pr-3 border shadow-sm " > 
                 <div class="app-auth-branding mb-4"><a class="app-logo" href="index.html"><img class="logo-icon mr-2" src="assets/images/logo.svg" alt="logo"></a></div>
-                <h2 class="auth-heading text-center mb-5">Acceder al portal</h2>
-                <div class="auth-form-container text-left">
+                <h2 class="auth-heading text-center mb-5">Acceder al sistema</h2>
+                <div class="auth-form-container text-left ">
                     @if(session()->has('error'))
                     <div class="text-danger text-center">
                         {{ session()->get('error') }}
@@ -77,12 +61,7 @@
                 </div>
             </form>
 
-            <div class="auth-option text-center pt-5">
-
-                <a href="{{route('register')}}" class="text-link" >Registrarse </a>
-
-
-            </div>
+            
         </div><!--//auth-form-container-->  
 
     </div><!--//auth-body-->

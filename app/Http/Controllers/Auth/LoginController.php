@@ -58,13 +58,13 @@ class LoginController extends Controller
         $email    = $request->email;
         $password = $request->password;
 
-        if (Auth::attempt(['email'=>$email,'password'=>$password,'status'=>'Active'])) {
+        if (Auth::attempt(['email'=>$email,'password'=>$password,'status'=>'Activo'])) {
             return redirect()->intended('home');
-        }elseif (Auth::attempt(['email'=>$email,'password'=>$password,'status'=> null])) {
+        }elseif (Auth::attempt(['email'=>$email,'password'=>$password,'status'=> "Activo"])) {
             return redirect()->intended('home');
         }
         else{
-            return redirect('login')->with('error', 'Oppose! You have entered invalid credentials');
+            return redirect('login')->with('error', 'Los datos ingresados no son válidos');
         }
     }
 
