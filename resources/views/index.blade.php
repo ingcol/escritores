@@ -77,6 +77,10 @@
           <li class="nav-item">
             <router-link class="text-dark" to="/algo"> Nosotros</router-link>
           </li>
+
+          <li class="nav-item">
+            <router-link class="text-dark" to="/actividades">Actividades</router-link>
+          </li>
           <li class="nav-item ">
             <a class="text-dark" target="_blank" href="/login"> Login</a>
           </li>

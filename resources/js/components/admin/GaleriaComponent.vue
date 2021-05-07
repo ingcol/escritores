@@ -25,7 +25,7 @@
                 <tbody>
                   <tr v-for="item in galerias">
                    <td class="cell">{{item.file}}</td>
-                   <td class="cell"><img  class="img-thumbnail img-slider" :src="'../storage/galerias/'+item.file_name"></td>
+                   <td class="cell"><img  class="img-thumbnail img-slider" :src="item.file_url"></td>
                    <td class="cell"><button  @click="modalEliminar(item.id)" class="btn btn-danger"><i class="fa fa-trash text-white"></i></button></td>
 
                  </tr>
@@ -155,7 +155,7 @@ methods: {
 
           reader.readAsDataURL(this.archivos[i]);
         }
-        console.log('cant1:',this.archivos.length);
+        
         this.cantImagen(this.archivos.length);
 
         this.$refs.files.value=null;

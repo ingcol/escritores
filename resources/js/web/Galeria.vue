@@ -11,10 +11,9 @@
 					<div
 					v-for="(src, index) in imgs"
 					:key="index"
-					class="col-md-4 mb-4"
-					@click="() => showImg(index)" style="cursor: pointer;"
-					>
-					<img :src="src" class="img-thumbnail">
+					class="col-md-4 mb-4 d-flex align-items-stretch pointer"
+					@click="() => showImg(index)" 					>
+					<img :src="src" class="img-thumbnail img-height">
 				</div>
 			</div>
 		</div>
@@ -23,6 +22,7 @@
 	:visible="visible"
 	:imgs="imgs"
 	@hide="handleHide"
+	:index="index"
 	></vue-easy-lightbox>
 </div>
 </template>
@@ -52,7 +52,7 @@ data() {
 },
 methods: {
 	showImg (index) {
-		;
+
 		this.index = index
 		this.visible = true
 	},
@@ -68,6 +68,7 @@ methods: {
 				this.imgs.push(response.data[item].file_url);
 
 			}
+			
 
 		})
 		.catch(errors => {
@@ -79,3 +80,11 @@ methods: {
 }
 }
 </script>
+
+<style>
+	.pointer{
+		cursor: pointer;
+	}
+	
+
+</style>

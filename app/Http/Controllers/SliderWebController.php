@@ -7,6 +7,6 @@ use DB;
 class SliderWebController extends Controller
 {
 	public function index(){
-    return DB::table('sliders')->where('EstadoSlider','Activo')->get();
+    return DB::table('sliders')->orderBy('id','Desc')->where('EstadoSlider','Activo')->get();
 }
 }

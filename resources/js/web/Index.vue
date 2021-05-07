@@ -9,7 +9,7 @@
         <div class="carousel-inner" role="listbox">
 
           <!-- Slide 1 -->
-          <div v-for="(item,index) in sliders" class="carousel-item" :class="{ active: index==0 }"  :style="imagenFondo(item.file_name)"
+          <div v-for="(item,index) in sliders" class="carousel-item" :class="{ active: index==0 }"  :style="imagenFondo(item.file_url)"
 
 
           >
@@ -85,7 +85,7 @@ export default {
 
   },
   imagenFondo(imagen){
-    return "background-image: url('../storage/sliders/"+imagen+"')";
+    return "background-image: url('"+imagen+"')";
 
   }
 }

@@ -49,23 +49,20 @@ class SliderController extends Controller
        $slider->DescripcionSlider=$request->DescripcionSlider;
        $slider->EstadoSlider="Activo";
 
-       $filenameWithExt = $request->file('file')->getClientOriginalName();
-            //Get just filename
-        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just ext
-        $extension = $request->file('file')->getClientOriginalExtension();
-            // Filename to store
-        $fileNameToStore = $filename.'_'.time().rand().'.'.$extension;
-            // Upload Image
-        $path = $request->file('file')->storeAs('public/sliders',$fileNameToStore);
+       $nameFile = $request->file('file');
+          
+       $newName = time().rand().'.'.$nameFile->getClientOriginalExtension();
+       #Amazon
 
-        $slider->file=$request->file('file')->getClientOriginalName();
-        $slider->file_name=$fileNameToStore;
-        $slider->file_type=$request->file('file')->getClientOriginalExtension();
-       # $slider->file_url
-        $slider->save();
-
-        return $slider;
+       $path = $nameFile->storeAs('sliders', $newName,'s3');
+       Storage::disk('s3')->setVisibility($path, 'public');
+                   
+       $slider->file_url=Storage::disk('s3')->url($path);
+       $slider->file=$nameFile->getClientOriginalName();
+       $slider->file_name=$newName;
+       $slider->file_type=$nameFile->getClientOriginalExtension();
+       $slider->save();
+       return $slider;
     }
 
     /**
@@ -106,21 +103,20 @@ class SliderController extends Controller
 
        if ($request->file('file')) {
           
-       
+       Storage::disk('s3')->delete('sliders/'.$slider->file_name);
 
-       $filenameWithExt = $request->file('file')->getClientOriginalName();
-            //Get just filename
-        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just ext
-        $extension = $request->file('file')->getClientOriginalExtension();
-            // Filename to store
-        $fileNameToStore = $filename.'_'.time().rand().'.'.$extension;
-            // Upload Image
-        $path = $request->file('file')->storeAs('public/sliders',$fileNameToStore);
+       $nameFile = $request->file('file');
+          
+       $newName = time().rand().'.'.$nameFile->getClientOriginalExtension();
+       #Amazon
 
-        $slider->file=$request->file('file')->getClientOriginalName();
-        $slider->file_name=$fileNameToStore;
-        $slider->file_type=$request->file('file')->getClientOriginalExtension();
+       $path = $nameFile->storeAs('sliders', $newName,'s3');
+       Storage::disk('s3')->setVisibility($path, 'public');
+                   
+       $slider->file_url=Storage::disk('s3')->url($path);
+       $slider->file=$nameFile->getClientOriginalName();
+       $slider->file_name=$newName;
+       $slider->file_type=$nameFile->getClientOriginalExtension();
 
     }
 
@@ -139,6 +135,9 @@ class SliderController extends Controller
      */
     public function destroy($id)
     {
+
+        $slider=Slider::find($id);
+        Storage::disk('s3')->delete('sliders/'.$slider->file_name);
         $delete=Slider::where('id',$id)->delete();
         return $delete;
     }

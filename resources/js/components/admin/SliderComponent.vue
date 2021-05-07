@@ -30,7 +30,7 @@
                     <td class="cell">{{item.TituloSlider}}</td>
                     <td class="cell">{{item.DescripcionSlider}}</td>
                     <td class="cell">{{item.EstadoSlider}}</td>
-                    <td class="cell"><img  class="img-thumbnail img-slider" :src="'../storage/sliders/'+item.file_name"></td>
+                    <td class="cell"><img  class="img-thumbnail img-slider" :src="item.file_url"></td>
                     <td class="cell"><button  @click="modalEditar(item)" class="btn btn-warning"><i class="fa fa-edit text-white"></i></button></td>
                     <td class="cell"><button  @click="modalEliminar(item.id)" class="btn btn-danger"><i class="fa fa-trash text-white"></i></button></td>
                     

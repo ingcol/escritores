@@ -14,9 +14,16 @@ export const rutas = [
     },
     {
         
-        path: '/algo',
+        path: '/actividades',
         name: '',
-        component: require('./web/Index').default,
+        component: require('./web/Actividad').default,
+        
+    },
+    {
+        
+        path: '/actividades/:slug',
+        name: '',
+        component: require('./web/DetalleActividad').default,
         
     },
 

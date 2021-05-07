@@ -7,6 +7,6 @@ use DB;
 class GaleriaWebController extends Controller
 {
  public function index(){
- 	return DB::table('galerias')->select('file_url')->get();
+ 	return DB::table('galerias')->orderBy('id','Desc')->select('file_url')->get();
  }   
 }

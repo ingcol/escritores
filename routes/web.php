@@ -17,6 +17,8 @@ use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SliderWebController;
 use App\Http\Controllers\GaleriaController;
 use App\Http\Controllers\GaleriaWebController;
+use App\Http\Controllers\ActividadController;
+use App\Http\Controllers\ActividadWebController;
 
 
 
@@ -69,6 +71,7 @@ Route::resource('/slider', SliderController::class);
 Route::get('/usuario', [App\Http\Controllers\Auth\RegisterController::class, 'index']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/galeria', GaleriaController::class);
+Route::get('/actividadAdmin',[ActividadController::class,'index']);
 
 });
 // -----------------------------API ADMIN-----------------------------------------
@@ -82,6 +85,13 @@ Route::group(['prefix' => 'api', 'middleware' => ['auth']], function(){
 
 	Route::get('/galeriaListado', [GaleriaController::class, 'listado']);
 
+	Route::post('/actividad', [ActividadController::class, 'store']);
+	Route::get('/listadoActividad', [ActividadController::class, 'listadoActividad']);
+	Route::put('/actividad/{id}', [ActividadController::class, 'update']);
+	Route::delete('/eliminarImagenActividad/{id}', [ActividadController::class, 'eliminarImagenActividad']);
+
+	Route::delete('/eliminarActividad/{id}', [ActividadController::class, 'destroy']);
+
 });
 
 
@@ -93,6 +103,8 @@ Route::group(['prefix' => 'api/web'], function(){
 
 	Route::get('/slider', [SliderWebController::class, 'index']);
 	Route::get('/galeria', [GaleriaWebController::class, 'index']);
+	Route::get('/actividades', [ActividadWebController::class, 'index']);
+	Route::get('/actividad/{slug}', [ActividadWebController::class, 'slug']);
 });
 
 

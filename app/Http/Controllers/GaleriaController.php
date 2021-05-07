@@ -5,6 +5,8 @@ use App\Models\Galeria;
 use Illuminate\Http\Request;
 use DB;
 use File;
+use Illuminate\Support\Facades\Storage;
+
 
 class GaleriaController extends Controller
 {
@@ -18,7 +20,7 @@ class GaleriaController extends Controller
         return view('galeria.index');
     }
     public function listado(){
-        return DB::table('galerias')->get();
+        return DB::table('galerias')->orderBy('id','Desc')->get();
     }
 
     /**
@@ -51,23 +53,19 @@ class GaleriaController extends Controller
                 }
 
                $galeria=new Galeria;
-               
 
-               $filenameWithExt = $nameFile->getClientOriginalName();
-            //Get just filename
-               $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just ext
-              
-            // Filename to store
-               $fileNameToStore = $filename.'_'.time().rand().'.'.$extension;
-            // Upload Image
-               $path = $nameFile->storeAs('public/galerias',$fileNameToStore);
+                $newName = time().rand().'.'.$nameFile->getClientOriginalExtension();
 
-               $galeria->file=$nameFile->getClientOriginalName();
-               $galeria->file_name=$fileNameToStore;
-               $galeria->file_type=$nameFile->getClientOriginalExtension();
-               $galeria->file_url='../storage/galerias/'.$fileNameToStore;
-               $galeria->save();
+                    //amazon
+                $path = $nameFile->storeAs('galerias', $newName,'s3');
+                Storage::disk('s3')->setVisibility($path, 'public');
+                   
+                $galeria->file_url=Storage::disk('s3')->url($path);
+                $galeria->file=$nameFile->getClientOriginalName();
+                $galeria->file_name=$newName;
+                $galeria->file_type=$nameFile->getClientOriginalExtension();
+   
+                $galeria->save();
 
 
            }
@@ -120,9 +118,13 @@ class GaleriaController extends Controller
     public function destroy($id)
     {
         $imagen=Galeria::find($id);
+
+        /*
         if(\Storage::exists('public/galerias/'.$imagen->file_name)){
             \Storage::delete('public/galerias/'.$imagen->file_name);
         }
+        */
+        Storage::disk('s3')->delete('galerias/'.$imagen->file_name);
         $delete=Galeria::where('id',$id)->delete();
         return $delete;
     }

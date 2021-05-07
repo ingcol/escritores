@@ -51,6 +51,15 @@
             </a>
           </li>
 
+          <li class="nav-item">
+            <a class="nav-link" href="/actividadAdmin">
+              <span class="fa fa-th fa-icon">
+            
+              </span>
+              <span class="nav-link-text">Actividades</span>
+            </a>
+          </li>
+
 
 
 
