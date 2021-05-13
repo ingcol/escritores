@@ -1,6 +1,6 @@
 <template>
   <div >
- <section class="counts  mb-4 section-header" style="">
+   <section class="counts  mb-4 section-header" style="">
     <div class="container">
 
       <div class="text-center  p-2 mt-4">
@@ -13,13 +13,13 @@
     </div>
   </section>
   
-<div
+  <div
   v-for="(item, index) in actividades"
   :key="index"
-  class="container  p-3 mt-4 mb-4 shadow-sm  align-items-stretch  bg-light box"
+  class="container  p-3 mt-4 mb-4  border  align-items-stretch  bg-light box"
   >
 
-  <div class="card border-0 shadow-sm">
+  <div class="card shadow-sm border-actividad" >
     <div class="card-header bg-white">
       <h6>{{item.TituloActividad}}</h6>
     </div>
@@ -27,7 +27,7 @@
 
       <p  v-if="item.DescripcionActividad.length<150" v-html="item.DescripcionActividad"></p>
       <p v-else v-html="item.DescripcionActividad.substring(0,150)+'...'"></p>
-      <router-link class="btn-sm btn btn-info float-right"  :to="'/actividades/'+item.slug" ><i class="fa fa-eye"></i>  Ver más</router-link>
+      <router-link class="btn-sm btn btn-warning float-right"  :to="'/actividades/'+item.slug" ><i class="fa fa-eye"></i>  Ver más</router-link>
     </div>
     <div class="card-footer text-muted bg-white">
       <i class="fa fa-clock-o"> {{fechaFormateada(item.created_at)}}</i>
@@ -76,3 +76,8 @@ imagenFondo(imagen){
 }
 }
 </script>
+
+<style>
+  .border-actividad{
+    border-left: solid 2px orange}
+  </style>

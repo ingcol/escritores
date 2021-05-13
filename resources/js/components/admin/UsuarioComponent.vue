@@ -305,6 +305,8 @@ modalEliminar(id){
 
 },
 eliminarUsuario(){
+  this.disable=true
+  this.loading=true
 
 axios.delete('/api/usuarioEliminar/'+this.idEliminar).then(response => {
     this.cerrarModalEliminar();

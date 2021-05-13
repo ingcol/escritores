@@ -128,7 +128,7 @@
     };
 </script>
 
-<style >
+<style  >
 	.carousel-item{
 		height: 400px;
 		width: 100%;

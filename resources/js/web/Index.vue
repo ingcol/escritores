@@ -15,11 +15,11 @@
           >
           <div class="carousel-container">
             <div class="carousel-content container">
-              <h2 class="animate__animated animate__fadeInDown">{{item.TituloSlider}}</h2>
+              <h3 class="animate__animated animate__fadeInDown text-white">{{item.TituloSlider}}</h3>
 
               <center>
 
-                <p class="text-center">{{item.DescripcionSlider}}</p>
+                <h5 class="text-center text-white mt-3">{{item.DescripcionSlider}}</h5>
               </center>
 
 
@@ -44,8 +44,9 @@
     </div>
   </div>
 </section><!-- End Hero -->
+<nosotros-inicio-web/>
 <galeria-web/>
-
+<aliados-web/>
 </div>
 </template>
 
@@ -91,3 +92,11 @@ export default {
 }
 }
 </script>
+
+<style type="text/css">
+.my-flex-card > div > div.count-box {
+    height: calc(100% - 15px);
+    margin-bottom: 15px;
+}
+
+</style>

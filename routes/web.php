@@ -19,6 +19,10 @@ use App\Http\Controllers\GaleriaController;
 use App\Http\Controllers\GaleriaWebController;
 use App\Http\Controllers\ActividadController;
 use App\Http\Controllers\ActividadWebController;
+use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\NosotrosWebController;
+use App\Http\Controllers\AliadosController;
+use App\Http\Controllers\AliadoWebController;
 
 
 
@@ -72,6 +76,9 @@ Route::get('/usuario', [App\Http\Controllers\Auth\RegisterController::class, 'in
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/galeria', GaleriaController::class);
 Route::get('/actividadAdmin',[ActividadController::class,'index']);
+Route::get('/empresa',[EmpresaController::class,'index']);
+Route::get('/aliadoAdmin',[AliadosController::class,'index']);
+
 
 });
 // -----------------------------API ADMIN-----------------------------------------
@@ -91,6 +98,12 @@ Route::group(['prefix' => 'api', 'middleware' => ['auth']], function(){
 	Route::delete('/eliminarImagenActividad/{id}', [ActividadController::class, 'eliminarImagenActividad']);
 
 	Route::delete('/eliminarActividad/{id}', [ActividadController::class, 'destroy']);
+	Route::get('/empresa', [EmpresaController::class, 'empresa']);
+	Route::post('/empresaActualizar', [EmpresaController::class, 'update']);
+	Route::get('/aliados',[AliadosController::class,'listadoAliados']);
+	Route::post('/aliado',[AliadosController::class,'store']);
+	Route::put('/aliado/{id}',[AliadosController::class,'update']);
+	Route::delete('/eliminarAliado/{id}',[AliadosController::class,'destroy']);
 
 });
 
@@ -105,6 +118,9 @@ Route::group(['prefix' => 'api/web'], function(){
 	Route::get('/galeria', [GaleriaWebController::class, 'index']);
 	Route::get('/actividades', [ActividadWebController::class, 'index']);
 	Route::get('/actividad/{slug}', [ActividadWebController::class, 'slug']);
+	Route::get('/nosotros', [NosotrosWebController::class, 'index']);
+	Route::post('/contactenos', [NosotrosWebController::class, 'contactenos']);
+	Route::get('/aliados', [AliadoWebController::class, 'index']);
 });
 
 

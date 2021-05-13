@@ -75,7 +75,7 @@
 
           </li>
           <li class="nav-item">
-            <router-link class="text-dark" to="/algo"> Nosotros</router-link>
+            <router-link class="text-dark" to="/nosotros"> Nosotros</router-link>
           </li>
 
           <li class="nav-item">
@@ -88,7 +88,7 @@
             <a class="text-dark"   href="/register">Registro</a>
           </li>
            <li class="nav-item ">
-            <a class="text-dark  border-bottom border-warning" style="border-radius:5px; padding-bottom: 1px;color:#5c768d"   href="/register"> Contacto</a>
+             <router-link class="text-dark" to="/contactenos">Contáctenos</router-link>
           </li>
         </ul>
       </div>
@@ -98,6 +98,8 @@
 
 
   <router-view></router-view>
+
+  <footer-web/>
 
 
 

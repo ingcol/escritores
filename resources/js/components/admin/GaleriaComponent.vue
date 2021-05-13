@@ -58,19 +58,19 @@
          <div class="mt-4 mb-3">
           <div class="fileUpload">
             <input  @change="cargarArchivos" class="upload" title="Adjuntar archivos" type="file"  name="image"  accept=".png, .jpg, .jpeg" id="file"   ref="files" multiple />
-           <span>Seleccione imágenes</span>
-         </div>
+            <span>Seleccione imágenes</span>
+          </div>
 
-       </div>
+        </div>
 
-     </div>
-     <div class="modal-footer">
-      <button type="button"  class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Cerrar</button>
-      <button type="submit" @click="guardarDatos()" :disabled="disable" class="btn btn-success text-white"><i class="display-loading"> <vue-loading  type="spin" v-if="loading" color="red"  :size="{ width: '30px', height: '2px' }"></vue-loading></i>   Enviar</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button"  class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Cerrar</button>
+        <button type="submit" @click="guardarDatos()" :disabled="disable" class="btn btn-success text-white"><i class="display-loading"> <vue-loading  type="spin" v-if="loading" color="red"  :size="{ width: '30px', height: '2px' }"></vue-loading></i>   Enviar</button>
+      </div>
+
     </div>
-
   </div>
-</div>
 </div>
 
 <div class="modal fade" id="ModalEliminar" tabindex="-1" role="dialog" aria-labelledby="modalIdLabel" aria-hidden="true">
@@ -262,7 +262,8 @@ methods: {
 
       },
       eliminarGaleria(){
-
+        this.disable=true
+        this.loading=true
         axios.delete('galeria/'+this.idEliminar).then(response => {
           this.cerrarModalEliminar();
           this.mensajeEliminado()
@@ -302,26 +303,26 @@ methods: {
 
 <style scoped="">
   .fileUpload {
-  background: orange;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  color: #fff;
-  font-size: 1em;
-  font-weight: bold;
-  margin: 1.25em auto;/*20px/16px 0*/
-  overflow: hidden;
-  padding: 0.875em;/*14px/16px*/
-  position: relative;
-  text-align: center;
-  width: 120px;
-   cursor: pointer;
-}
-.fileUpload:hover, .fileUpload:active, .fileUpload:focus {
-  background: #00a2a4;
-  cursor: pointer;
-}
-.fileUpload input.upload {
+    background: orange;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1em;
+    font-weight: bold;
+    margin: 1.25em auto;/*20px/16px 0*/
+    overflow: hidden;
+    padding: 0.875em;/*14px/16px*/
+    position: relative;
+    text-align: center;
+    width: 120px;
+    cursor: pointer;
+  }
+  .fileUpload:hover, .fileUpload:active, .fileUpload:focus {
+    background: #00a2a4;
+    cursor: pointer;
+  }
+  .fileUpload input.upload {
     position: absolute;
     top: 0;
     right: 0;
@@ -333,18 +334,18 @@ methods: {
     filter: alpha(opacity=0);
     width: 148px;
     height: 46px;
-  cursor: pointer;
-}
+    cursor: pointer;
+  }
 
-input[type="file"] {
+  input[type="file"] {
     position: fixed;
     right: 100%;
     bottom: 100%;
-}
-.custom-file-upload {
+  }
+  .custom-file-upload {
     border: 1px solid #ccc;
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer;
-}
+  }
 </style>

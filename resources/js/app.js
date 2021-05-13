@@ -7,6 +7,8 @@ npm i --save vuejs-loading-plugin
 import VueLoading from 'vuejs-loading-plugin'
 Vue.use(VueLoading)
 */
+
+
 import Lightbox from 'vue-easy-lightbox'
 
 Vue.use(Lightbox)
@@ -24,6 +26,8 @@ Vue.component('slider-component', require('./components/admin/SliderComponent.vu
 Vue.component('usuario-component', require('./components/admin/UsuarioComponent.vue').default);
 Vue.component('galeria-component', require('./components/admin/GaleriaComponent.vue').default);
 Vue.component('actividad-component', require('./components/admin/ActividadComponent.vue').default);
+Vue.component('empresa-component', require('./components/admin/EmpresaComponent.vue').default);
+Vue.component('aliado-component', require('./components/admin/AliadoComponent.vue').default);
 //Vue.component('sidebar', require('./components/SidebarComponent.vue').default);
 
 const app = new Vue({

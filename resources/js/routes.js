@@ -14,6 +14,13 @@ export const rutas = [
     },
     {
         
+        path: '/nosotros',
+        name: '',
+        component: require('./web/Nosotros').default,
+        
+    },
+    {
+        
         path: '/actividades',
         name: '',
         component: require('./web/Actividad').default,
@@ -26,6 +33,15 @@ export const rutas = [
         component: require('./web/DetalleActividad').default,
         
     },
+    {
+        
+        path: '/contactenos',
+        name: '',
+        component: require('./web/Contactenos').default,
+        
+    },
+
+    
 
     //Error 404 redireccionar
     

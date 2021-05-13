@@ -31,6 +31,14 @@
               <span class="nav-link-text">Usuarios</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/empresa">
+              <span class="fa fa-building fa-icon">
+            
+              </span>
+              <span class="nav-link-text">Fundación</span>
+            </a>
+          </li>
 
           <li class="nav-item">
             <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
@@ -57,6 +65,15 @@
             
               </span>
               <span class="nav-link-text">Actividades</span>
+            </a>
+          </li>
+
+           <li class="nav-item">
+            <a class="nav-link" href="/aliadoAdmin">
+              <span class="fa fa-handshake-o  fa-icon">
+            
+              </span>
+              <span class="nav-link-text">Aliados</span>
             </a>
           </li>
 

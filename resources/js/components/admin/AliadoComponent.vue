@@ -4,7 +4,7 @@
      <div class="container-xl bg-white p-4 shadow-sm">
       <div class=" row border-bottom mb-5">
 
-       <div class="col-md-6"><h4 >Módulo de slider</h4></div>
+       <div class="col-md-6"><h4 >Módulo de aliados</h4></div>
        <div class="col-md-6"> <button @click="modalNuevo()" class="btn btn-success float-right mb-2 text-white">Registrar</button>
        </div>
 
@@ -17,20 +17,19 @@
               <table class="table app-table-hover mb-0 text-left">
                 <thead>
                   <tr>
-                    <th class="cell">Titulo</th>
-                    <th class="cell">Descripción</data></th>
+                    <th class="cell">Nombre</th>
                     <th class="cell">Estado</th>
-                    <th class="cell">Imágen</th>
+                    <th class="cell">Logo</th>
                     <th class="cell">Editar</th>
                     <th class="cell">Eliminar</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="item in sliders">
-                    <td class="cell">{{item.TituloSlider}}</td>
-                    <td class="cell">{{item.DescripcionSlider}}</td>
-                    <td class="cell">{{item.EstadoSlider}}</td>
-                    <td class="cell"><img  class="img-thumbnail img-slider" :src="item.file_url"></td>
+                  <tr v-for="item in aliados">
+                    <td class="cell">{{item.NombreAliado}}</td>
+                    <td class="cell">{{item.EstadoAliado}}</td>
+                   
+                    <td class="cell"><img  v-if="item.file_url" class="img-thumbnail img-slider" :src="item.file_url"></td>
                     <td class="cell"><button  @click="modalEditar(item)" class="btn btn-warning"><i class="fa fa-edit text-white"></i></button></td>
                     <td class="cell"><button  @click="modalEliminar(item.id)" class="btn btn-danger"><i class="fa fa-trash text-white"></i></button></td>
                     
@@ -50,36 +49,31 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalIdLabel" v-if="!modoEditar">Registrar un slider</h5>
-        <h5 class="modal-title" id="modalIdLabel" v-else>Editar este Slider</h5>
+        <h5 class="modal-title" id="modalIdLabel" v-if="!modoEditar">Registrar un aliado</h5>
+        <h5 class="modal-title" id="modalIdLabel" v-else>Editar este aliado</h5>
         
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form @submit.prevent="modoEditar ? actualizarDatos(slider) : guardarDatos()">
+      <form @submit.prevent="modoEditar ? actualizarDatos(aliado) : guardarDatos()">
         <div class="modal-body">
 
           <div class="mb-3">
-            <label>Título</label>
-            <input type="text" class="form-control" v-model="slider.TituloSlider">
-          </div>
-
-          <div class="mb-3">
-            <label>Descripción</label>
-            <textarea  class="form-control height-text-tarea" v-model="slider.DescripcionSlider"></textarea>
+            <label>Nombre</label>
+            <input type="text" class="form-control" v-model="aliado.NombreAliado">
           </div>
           <div class="mb-3"  v-if="modoEditar">
             <label>Estado</label>
-            <select class="form-control" v-model="slider.EstadoSlider">
+            <select class="form-control" v-model="aliado.EstadoAliado">
              <option value="Activo">Activo</option>
              <option value="Inactivo">Inactivo</option>
            </select>
          </div>
-         <label>Imágen: tamaño recomendado(1300x800)</label>
+         <label>Logo (opcional): tamaño recomendado(200x200)</label>
          <div class="mt-4 mb-3">
 
-          <input  id="file" title="Imágen tamaño recomendado(1300x800)" type="file" @change="cargarArchivos" accept=".png, .jpg, .jpeg"  ref="file" />
+          <input  id="file" title="Logo tamaño recomendado(200x200)" type="file" @change="cargarArchivos" accept=".png, .jpg, .jpeg"  ref="file" />
 
         </div>
 
@@ -98,7 +92,7 @@
   <div class="modal-dialog modal-md" role="document">
     <div class="modal-content">
       <div class="modal-header d-block">
-        <h5 class="modal-title text-center" id="modalIdLabel" >¿Desea eliminar este slider?</h5>
+        <h5 class="modal-title text-center" id="modalIdLabel" >¿Desea eliminar este aliado?</h5>
         
   
       </div>
@@ -108,7 +102,7 @@
        <div class="text-center">
 
          <button type="button" @click="cerrarModalEliminar" ref="deleteBtn" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Cancelar</button>
-         <button type="submit" @click="eliminarSlider()" :disabled="disable" class="btn btn-danger text-white"><i class="display-loading"> <vue-loading  type="spin" v-if="loading" color="red"  :size="{ width: '30px', height: '2px' }"></vue-loading></i>   Eliminar</button>
+         <button type="submit" @click="eliminarAliado()" :disabled="disable" class="btn btn-danger text-white"><i class="display-loading"> <vue-loading  type="spin" v-if="loading" color="red"  :size="{ width: '30px', height: '2px' }"></vue-loading></i>   Eliminar</button>
        </div>
 
 
@@ -130,7 +124,7 @@
     VueLoading
   },
   mounted() {
-   this.getSliders();
+   this.getAliados();
    //this.$loading(true) loading para cargar en filtros
  },
  data() {
@@ -141,13 +135,12 @@
     tituloBoton:'',
     showModal:false,
     modoEditar:false,
-    sliders:[],
+    aliados:[],
     file:'',
     loading:false,
-    slider:{
-      TituloSlider:'',
-      DescripcionSlider:'',
-      EstadoSlider:'',
+    aliado:{
+      NombreAliado:'',
+      EstadoAliado:'',
     }
   }
 },
@@ -168,9 +161,8 @@ modalNuevo(){
   this.abriModal();
 },
 limpiarCampos(){
-  this.slider.TituloSlider=''
-  this.slider.DescripcionSlider=''
-  this.slider.EstadoSlider=''
+  this.aliado.NombreAliado=''
+  this.aliado.EstadoAliado=''
   this.$refs.file.value=null;
   this.file=''
 },
@@ -179,10 +171,8 @@ guardarDatos(){
   this.loading=true
   let formData = new FormData();
   formData.append('file', this.file);
-  formData.append('TituloSlider', this.slider.TituloSlider);
-  formData.append('DescripcionSlider', this.slider.DescripcionSlider);
-  formData.append('EstadoSlider', this.slider.EstadoSlider);
-  axios.post('/slider', formData, {
+  formData.append('NombreAliado', this.aliado.NombreAliado);
+  axios.post('/api/aliado', formData, {
     headers: { 'content-type': 'multipart/form-data' }
   })
   .then(response => {
@@ -190,7 +180,7 @@ guardarDatos(){
     this.disable=false
     this.mensajeGuardado();
     this.limpiarCampos();
-    this.sliders.unshift(response.data);
+    this.aliados.unshift(response.data);
   }).catch(error => {
     this.disable=false
     this.loading=false
@@ -202,27 +192,26 @@ modalEditar(item){
   this.limpiarCampos();
   this.abriModal();
   this.modoEditar = true;
-  this.slider.TituloSlider = item.TituloSlider;
-  this.slider.DescripcionSlider = item.DescripcionSlider;
-  this.slider.EstadoSlider = item.EstadoSlider;
-  this.slider.id = item.id;
+  this.aliado.NombreAliado = item.NombreAliado;
+  this.aliado.EstadoAliado = item.EstadoAliado;
+  this.aliado.id = item.id;
 },
-actualizarDatos(slider){
+actualizarDatos(aliado){
   this.disable=true
   this.loading=true
-  let formData = new FormData();
+   let formData = new FormData();
   formData.append('file', this.file);
-  formData.append('TituloSlider', this.slider.TituloSlider);
-  formData.append('DescripcionSlider', this.slider.DescripcionSlider);
-  formData.append('EstadoSlider', this.slider.EstadoSlider);
+  formData.append('NombreAliado', this.aliado.NombreAliado);
+  formData.append('EstadoAliado', this.aliado.EstadoAliado);
   formData.append('_method', 'put');
-  axios.post('slider/'+this.slider.id, formData).then(response => {
+  axios.post('/api/aliado/'+this.aliado.id, formData).then(response => {
     this.cerrarModalEditar();
     this.modoEditar=false
     this.disable=false
     this.loading=false
     this.mensajeEditado()
-    this.getSliders();
+    this.getAliados();
+    this.limpiarCampos();
   }).catch(error => {
     this.disable=false
     this.loading=false
@@ -300,16 +289,17 @@ modalEliminar(id){
   myModalEliminar.show();
 
 },
-eliminarSlider(){
- this.disable=true
+eliminarAliado(){
+  this.disable=true
   this.loading=true
-axios.delete('slider/'+this.idEliminar).then(response => {
+
+axios.delete('/api/eliminarAliado/'+this.idEliminar).then(response => {
     this.cerrarModalEliminar();
     this.mensajeEliminado()
     this.modoEditar=false
     this.disable=false
     this.loading=false
-    this.getSliders();
+    this.getAliados();
   }).catch(error => {
     this.disable=false
     this.loading=false
@@ -317,11 +307,11 @@ axios.delete('slider/'+this.idEliminar).then(response => {
   });
 
 },
-getSliders() {
-  axios.get('/api/slider')
+getAliados() {
+  axios.get('/api/aliados')
   .then(response => {
-    this.sliders = response.data;
-    console.log(response.data);
+    this.aliados = response.data;
+    
 
 
   })
