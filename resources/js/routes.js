@@ -3,57 +3,51 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
+
+require('./bootstrap');
+
 export const rutas = [
+{
+    path: '',
+    component: () => import('./web/Index'),
+    name: 'Index',
+},
+{
+    path: '/nosotros',
+    component: () => import('./web/Nosotros'),
+    name: 'Nosotros',
+  },
 
-    {
+  {
+    path: '/actividades',
+    component: () => import('./web/Actividad'),
+    name: 'Actividad',
+  },
+  {
+    path: '/actividades/:slug',
+    component: () => import('./web/DetalleActividad'),
+    name: 'DetalleActividad',
+  },
 
-        path: '/',
-        name: '',
-        component: require('./web/Index').default,
-        
-    },
-    {
-        
-        path: '/nosotros',
-        name: '',
-        component: require('./web/Nosotros').default,
-        
-    },
-    {
-        
-        path: '/actividades',
-        name: '',
-        component: require('./web/Actividad').default,
-        
-    },
-    {
-        
-        path: '/actividades/:slug',
-        name: '',
-        component: require('./web/DetalleActividad').default,
-        
-    },
-    {
-        
-        path: '/contactenos',
-        name: '',
-        component: require('./web/Contactenos').default,
-        
-    },
+  {
+    path: '/contactenos',
+    component: () => import('./web/Contactenos'),
+    name: 'Contactenos',
+  },
 
-    
 
     //Error 404 redireccionar
-    
-    {
-        path: '*',
-        component: require('./components/web/Footer').default
-    }
-    
-]
 
-export default new Router({
-    routes: rutas,
-    mode: 'history',
-    linkActiveClass: 'active'
-})
+    {
+    path: '*',
+    component: () => import('./web/Error'),
+    name: 'Error',
+  },
+    
+    ]
+
+    export default new Router({
+        routes: rutas,
+        mode: 'history',
+        linkActiveClass: 'active'
+    })

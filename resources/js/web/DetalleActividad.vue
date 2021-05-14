@@ -1,14 +1,30 @@
 <template>
 	<div>
-		<div >
+		<div>
 			<section class="counts  mb-4 section-header" style="">
 				<div class="container">
 
-					<div class="text-left  p-2 mt-4">
+					<div class="text-center  p-2 mt-4">
 						<h3 class="text-white">{{tituloActividad}}</h3>
 						
 					</div>
 
+				</div>
+			</section>
+		</div>
+		<div   class="content-load"  v-if="!creado">
+			<section class="counts  mb-1  mt-5" style="" v-if="Error">
+				<div class="page-wrap  d-flex flex-row align-items-center">
+					<div class="container">
+						<div class="row justify-content-center">
+							<div class="col-md-12 text-center">
+								<span class="display-1 d-block">404</span>
+								<div class="mb-4 lead">Página no encontrada</div>
+								<router-link  class="btn btn-link"to="/"> Inicio</router-link>
+
+							</div>
+						</div>
+					</div>
 				</div>
 			</section>
 		</div>
@@ -22,13 +38,17 @@
 
 
 		<div class="container" v-if="imgs.length">
-			<div class="row">
+			<div class="row  my-flex-card">
 				<div
 				v-for="(src, index) in imgs"
 				:key="index"
-				class="col-md-4 mb-4 d-flex align-items-stretch pointer"
-				@click="() => showImg(index)" 					>
-				<img :src="src" class="img-thumbnail img-height">
+				class="col-md-4 mb-4  pointer"
+				@click="() => showImg(index)" >
+				<div class="box-img-detail border p-4">
+					<center>
+						<img :src="src" class="img-thumbnail img-height">
+					</center>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -69,7 +89,8 @@
                 index: 0,   // default
                 tituloActividad:'',
                 descripcionActividad:'',
-                creado:''
+                creado:'',
+                Error:false
 
 
 
@@ -93,10 +114,6 @@
 
         		let slug=this.$route.params.slug
 
-
-
-
-
         		let url='/api/web/actividad/'+slug;
 
 
@@ -113,10 +130,14 @@
 
         			}
 
-        			console.log('imagenes:',this.imgs);
+        			
 
 
         		}).catch(errors => {
+
+        			if (errors) {
+        				this.Error=true
+        			}
 
 
 
@@ -127,27 +148,12 @@
         },
     };
 </script>
-
-<style  >
-	.carousel-item{
-		height: 400px;
-		width: 100%;
-	} 
-	.carousel-item img{
-		min-height: 400px;
-		height: 100%;
-
+<style >
+	.my-flex-card > div > div.box-img-detail {
+		height: calc(100% - 15px);
+		margin-bottom: 15px;
 	}
-	.section-header{
-		background-position: center center;background-repeat: no-repeat;background-attachment: fixed;background-size: cover; background-color: #888;
-        background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(https://llanotic.s3.amazonaws.com/actividades/section-kalu.jpg);
-		height: 200px; 
-
+	.box-img-detail{
+		background-color:#f9f9f9
 	}
-.img-height{
-	max-height: 300px;
-	max-width: 300px;
-}
-	
-
 </style>

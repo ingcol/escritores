@@ -1,13 +1,9 @@
 <template>
 	<div>
-		<section class="counts  mb-4 section-header" style="">
-			<div class="container">
-
+		<section class="counts  mb-4 section-header ">
+			<div class="container p-4">
 				<div class="text-center  p-2 mt-4">
 					<h3 class="mb-4 text-white">Contáctenos</h3>
-
-
-
 				</div>
 
 			</div>
@@ -21,7 +17,7 @@
 
 				<div class="row">
 
-					<div class="col-lg-4 d-flex align-items-stretch" data-aos="fade-up">
+					<div class="col-lg-4 d-flex align-items-stretch" >
 						<div class="info-box border">
 							<i class="fa fa-map"></i>
 							<h3>Dirección</h3>
@@ -29,7 +25,7 @@
 						</div>
 					</div>
 
-					<div class="col-lg-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+					<div class="col-lg-4 d-flex align-items-stretch" >
 						<div class="info-box border">
 							<i class="fa fa-envelope"></i>
 							<h3>Correo</h3>
@@ -37,7 +33,7 @@
 						</div>
 					</div>
 
-					<div class="col-lg-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+					<div class="col-lg-4 d-flex align-items-stretch" >
 						<div class="info-box border">
 							<i class="fa fa-phone"></i>
 							<h3>Teléfono</h3>

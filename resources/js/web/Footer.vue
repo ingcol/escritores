@@ -96,23 +96,3 @@ methods: {
 }
 }
 </script>
-<style >
-.whatsapp {
-  position: fixed;
-    width: 50px;
-    height: 50px;
-    bottom: 40px;
-    right: 40px;
-    background-color: #25d366;
-    color: #FFF;
-    border-radius: 50%;
-    text-align: center;
-    font-size: 26px;
-    z-index: 100;
-}
-
-.whatsapp-icon {
-  margin-top:13px;
-}
-
-</style>

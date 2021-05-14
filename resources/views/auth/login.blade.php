@@ -49,10 +49,12 @@
                                     </label>
                                 </div>
                             </div><!--//col-6-->
+                            <!--
                             <div class="col-6">
                                 <div class="forgot-password text-right">
                                  <a href="{{ route('forget-password') }}" > ¿Olvidó su contraseña?</a>
                              </div>
+                         -->
                          </div><!--//col-6-->
                      </div><!--//extra-->
                  </div><!--//form-group-->

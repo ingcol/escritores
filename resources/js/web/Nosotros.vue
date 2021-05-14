@@ -3,8 +3,8 @@
    <section class="counts  mb-1 section-header" style="">
     <div class="container" >
 
-      <div class="text-center  p-2 mt-4">
-        <h3 class="mb-4 text-white">Llanotic</h3>
+      <div class="text-center  p-3 mt-4">
+        <h3 class="mb-4 text-white">Llanotics</h3>
         
       </div>
 
@@ -12,7 +12,7 @@
   </section>
   
   <section id="about" class="about">
-    <div class="container" style="box-shadow: none;">
+    <div class="container shadow-none">
 
       <div class="row no-gutters">
 
@@ -32,21 +32,21 @@
           </div>
 
           <div class="icon-box" v-if="vision" >
-            <div class="icon"><i class="fa fa-arrow-circle-up "></i></div>
-            <h4 class="title"><a href="">Visión</a></h4>
+            <div class="icon"><i class="fa fa-arrow-circle-up"></i></div>
+            <h4 class="title"><a >Visión</a></h4>
             <div class="description" v-html="vision"></div>
           </div>
 
           <div class="icon-box" v-if="valores" >
             <div class="icon"><i class="fa fa-handshake-o"></i></div>
-            <h4 class="title"><a href="">Valores</a></h4>
+            <h4 class="title"><a >Valores</a></h4>
             <div v-html="valores" class="description"></div>
           </div>
 
         </div>
 
 
-        <div class="col-lg-6 video-box">
+        <div class="col-lg-6 ">
           <br><br>
           <br>
       

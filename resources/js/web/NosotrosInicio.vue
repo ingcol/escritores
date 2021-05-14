@@ -5,7 +5,7 @@
        <div class="icon-box" >
             <div class="icon"><i class="fa fa-users"></i></div>
             <div class="section-title">
-            <h2 class="text-center">Llanotic</h2>
+            <h2 class="text-center">Llanotics</h2>
            
           </div>
             

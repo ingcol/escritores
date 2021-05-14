@@ -36,8 +36,10 @@ class NosotrosWebController extends Controller
             "ContactoMensaje"=>$request->ContactoMensaje,
             "ContactoAsunto"=>$request->ContactoAsunto
         ];
+        $empresa=Empresa::first();
+
         $subject = "Llanotic contáctenos";
-            $for ="asistente1@llanotics.org";
+            $for =$empresa->EmailEmpresa;
             try{
               $envioMail=Mail::send('email.index',$InformacionContacto, function($msj) use($subject,$for){
                 $msj->from("llanotic2021@gmail.com","Contáctenos llanotic" );

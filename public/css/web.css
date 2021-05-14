@@ -1502,3 +1502,49 @@ section {
 #footer .credits a {
   color: #9eccf4;
 }
+
+
+/*Componentes*/
+
+.carousel-item{
+    height: 400px;
+    width: 100%;
+  } 
+  .carousel-item img{
+    min-height: 400px;
+    height: 100%;
+
+  }
+  .section-header{
+    background-position: center center;background-repeat: no-repeat;background-attachment: fixed;background-size: cover; background-color: #888;
+        background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(https://llanotic.s3.amazonaws.com/actividades/section-kalu.jpg);
+    height: auto;
+    padding: 15px auto;
+
+  }
+.img-height{
+  max-height: 300px;
+  max-width: 300px;
+}
+.whatsapp {
+  position: fixed;
+    width: 50px;
+    height: 50px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 26px;
+    z-index: 100;
+}
+
+.whatsapp-icon {
+  margin-top:13px;
+}
+
+    .content-load{
+      height: 40em !important;
+
+    }

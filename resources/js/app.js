@@ -22,12 +22,13 @@ Vue.use( CKEditor );
 Vue.use(VueToastr, {
   /* OverWrite Plugin Options if you need */
 });
-Vue.component('slider-component', require('./components/admin/SliderComponent.vue').default);
-Vue.component('usuario-component', require('./components/admin/UsuarioComponent.vue').default);
-Vue.component('galeria-component', require('./components/admin/GaleriaComponent.vue').default);
-Vue.component('actividad-component', require('./components/admin/ActividadComponent.vue').default);
-Vue.component('empresa-component', require('./components/admin/EmpresaComponent.vue').default);
-Vue.component('aliado-component', require('./components/admin/AliadoComponent.vue').default);
+Vue.component("slider-component", () => import("./components/admin/SliderComponent.vue"));
+Vue.component("usuario-component", () => import("./components/admin/UsuarioComponent.vue"));
+Vue.component("galeria-component", () => import("./components/admin/GaleriaComponent.vue"));
+Vue.component("actividad-component", () => import("./components/admin/ActividadComponent.vue"));
+Vue.component("empresa-component", () => import("./components/admin/EmpresaComponent.vue"));
+Vue.component("aliado-component", () => import("./components/admin/AliadoComponent.vue"));
+
 //Vue.component('sidebar', require('./components/SidebarComponent.vue').default);
 
 const app = new Vue({

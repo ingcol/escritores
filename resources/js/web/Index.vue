@@ -15,7 +15,8 @@
           >
           <div class="carousel-container">
             <div class="carousel-content container">
-              <h3 class="animate__animated animate__fadeInDown text-white">{{item.TituloSlider}}</h3>
+              <h2 class="animate__animated animate__fadeInDown text-white font-weight-bold">
+              {{item.TituloSlider}}</h2>
 
               <center>
 

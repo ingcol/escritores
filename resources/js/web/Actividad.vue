@@ -2,17 +2,14 @@
   <div >
    <section class="counts  mb-4 section-header" style="">
     <div class="container">
-
-      <div class="text-center  p-2 mt-4">
+      <div class="text-center  pb-1 pt-4 mt-3 ">
         <h3 class="mb-4 text-white">Actividades</h3>
-        <p class="mt-2 text-white">Aquí puede conocer las actividades que hemos realizado.</p>
-        
-
+        <p class="mt-2  text-white">Aquí puede conocer las actividades que hemos realizado.</p>
       </div>
-
     </div>
   </section>
-  
+  <div   class="content-load"  v-if="!actividades.length">
+  </div>
   <div
   v-for="(item, index) in actividades"
   :key="index"
@@ -43,7 +40,7 @@
   moment.locale('es-co');
   export default {
 
-    mounted() {
+    created() {
       this.getActividades();  
    //this.$loading(true) loading para cargar en filtros
  },
@@ -80,4 +77,5 @@ imagenFondo(imagen){
 <style>
   .border-actividad{
     border-left: solid 2px orange}
+
   </style>

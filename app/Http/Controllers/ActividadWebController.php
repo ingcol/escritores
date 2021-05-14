@@ -14,9 +14,15 @@ class ActividadWebController extends Controller
 	public function slug($slug){
 
 		 $actividad=Actividad::where('slug',$slug)->first();
+		 if ($actividad) {
+		 
 		 $imagenes= $actividad->imagenes;
 		 return response()->json(['actividad'=>$actividad,
 		 	'imagenes'=>$imagenes]);
+		 	# code...
+		 }else{
+		 	return response()->json('errors', 422);
+		 }
 
 
 	}
